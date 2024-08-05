@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #c2fcd2, #ea8cf5)
+			
+        }
+
+        form {
+            background: #c0eef0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #3e9fb3;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            margin-left: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <form action="/predict" method="post">
+        <h1>Predict Student GradeClass</h1>
+        
+        <label for="StudyTimeWeekly">Study Time Weekly:</label>
+        <input type="text" name="StudyTimeWeekly" id="StudyTimeWeekly">
+
+        <label for="Absences">Absences:</label>
+        <input type="text" name="Absences" id="Absences">
+
+        <label for="Tutoring">Tutoring:</label>
+        <input type="text" name="Tutoring" id="Tutoring">
+
+        <label for="ParentalSupport">Parental Support:</label>
+        <input type="text" name="ParentalSupport" id="ParentalSupport">
+
+
+
+        <label for="GPA">GPA:</label>
+        <input type="text" name="GPA" id="GPA">
+
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction_text %}
+        <div class="result">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+    {% endif %}
+</body>
+</html>
